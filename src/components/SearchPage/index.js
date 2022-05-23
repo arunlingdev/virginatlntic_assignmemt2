@@ -17,6 +17,7 @@ import Cards from '../Cards'
 import NoFound from '../NoFound'
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import axios from 'axios';
 import './SearchPage.scss';
 
 /**
@@ -143,7 +144,7 @@ const SearchPage = () => {
           </div>
         </div>
         <Divider sx={{ margin: "20px" }} />
-        {loading !== 0 && <div className="loadPaginate"><i className="fas fa-spinner fa-pulse"></i></div>}
+        {loading  && <div className="loadPaginate"><i className="fas fa-spinner fa-pulse"></i></div>}
         {resHolidays.length > 0 && (<div>
           <div style={{ color: 'black', fontFamily: 'lato', fontSize: '16px' }} component="legend">
             Filter by...
