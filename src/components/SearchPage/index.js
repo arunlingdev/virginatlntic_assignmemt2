@@ -124,14 +124,14 @@ const SearchPage = () => {
               <TextField {...params} margin="normal" fontFamily="lato" variant="outlined" label="Select Location" />
             )}
           />
-          <div className="dates_heading">Check-in Date</div>
+          <div className="dates_heading">Departure Date</div>
           <DatePicker
             minDate={new Date()}
             selected={startDate}
             onChange={(date) => setStartDate(date)}
             selectsStart
             startDate={startDate}
-            placeholderText="Start"
+            placeholderText="Departure Date"
             dateFormat="dd/MM/yyyy"
             disabled={loading}
           />
