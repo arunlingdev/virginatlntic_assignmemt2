@@ -1,0 +1,12 @@
+@import "../../styles/constants/colors";
+
+.not-found {
+    height: 300px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 32px;
+      font-family: Lato;
+      color: $color-nickel-gray;
+  }

@@ -1,0 +1,83 @@
+@import '../../styles/constants/colors';
+
+.SearchPage {
+  margin-top: 60px;
+  .heading {
+    padding-top: 12px;
+    font-size: 24px;
+    font-family: 'Lato';
+  }
+
+  .wrapper {
+    margin: 12px 24px;
+
+    .dates_heading {
+        font-family: 'lato';
+        font-size: 16px;
+        margin-top: 12px;
+      }
+
+    .submit {
+      button {
+        background: $color-cyan-blue;
+        border: 1px solid $color-cyan-blue;
+        color: #ffffff;
+        box-shadow: none;
+        margin-top: 20px;
+        &:hover {
+          background: rgb(0, 95, 125);
+          border: 1px solid rgb(0, 95, 125);
+          color: #ffffff;
+        }
+      }
+      .MuiButton-contained.Mui-disabled {
+        color: rgba(0, 0, 0, 0.26);
+        box-shadow: none;
+        background-color: rgba(0, 0, 0, 0.12);
+        border-color: rgba(0, 0, 0, 0.12);
+      }
+      .MuiButton-label {
+        text-transform: capitalize;
+      }
+    }
+
+    .MuiFormControl-marginNormal {
+      margin-top: 8px;
+    }
+  }
+
+  .b-article__body__element_loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 100px);
+    .fas {
+        font-size: 40px;
+        color: $color-trnsprnt-black-1;
+        font-weight: normal;
+    }
+  }
+
+  .totalCount {
+    color: black;
+    font-family: lato;
+    font-size: 16px;
+    padding: 24px;
+  }
+
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 24px 24px 24px;
+  }
+
+  .loadPaginate {
+    text-align: center;
+    margin-bottom: dp(16);
+    .fas {
+        font-size: 40px;
+        color: $color-trnsprnt-black-1;
+        font-weight: normal;
+    }
+}
+}

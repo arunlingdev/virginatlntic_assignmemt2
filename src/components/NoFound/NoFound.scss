@@ -1,0 +1,20 @@
+@import '../../styles/constants/colors';
+
+.ui-search-not-found {
+    text-align:center;
+    font-size: 24px;
+    font-family: lato;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: calc(100vh - 300px);
+    color: $color-grey-2;
+    width: 80%;
+    margin: 0 auto;
+    .fal {
+        color: $color-grey-2;
+        font-size: 50px;
+        margin-bottom: 25px;
+    }
+}

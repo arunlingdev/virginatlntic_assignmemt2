@@ -1,0 +1,12 @@
+@import '../../styles/constants/colors';
+.card {
+    max-width: 350px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    transition: 0.3s;
+    box-shadow: 0 8px 40px -12px $color-trnsprnt-black-1;
+
+    &.hover {
+      box-shadow: 0 16px 70px -12.125px $color-trnsprnt-black-1;
+    }
+}
