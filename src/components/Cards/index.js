@@ -18,6 +18,7 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import PropTypes from 'prop-types';
+import {getSafe} from '../../data/utils/utils'
 import './Cards.scss';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
@@ -33,9 +34,9 @@ const Cards = ({ holiday }) => {
   const [activeStep, setActiveStep] = useState(0);
   const theme = useTheme();
   const maxSteps =
-    (holiday?.hotel?.content?.images?.length > 0 && holiday?.hotel?.content?.images?.length < 20)
+  getSafe(()=> (holiday?.hotel?.content?.images?.length > 0 && holiday?.hotel?.content?.images?.length < 20)
       ? holiday?.hotel?.content?.images?.length
-      : 0;
+      : 0);
 
   const handleStepChange = (step) => {
     setActiveStep(step);
@@ -71,7 +72,7 @@ const Cards = ({ holiday }) => {
                     overflow: "hidden",
                     width: "100%",
                   }}
-                  src={"https:" + image?.RESULTS_CAROUSEL?.url}
+                  src={"https:" + getSafe(()=> image?.RESULTS_CAROUSEL?.url)}
                   alt={`hotel image ${index}`}
                 />
               ) : null}
@@ -110,7 +111,7 @@ const Cards = ({ holiday }) => {
       <Divider />
       <CardContent>
         <Typography variant='body2' color='textSecondary' component='p'>
-          {holiday?.hotel?.content?.hotelDescription.substring(0, 100) + "..."}
+          {getSafe(()=> holiday?.hotel?.content?.hotelDescription.substring(0, 100) + "...")}
         </Typography>
         <Divider />
         <Typography component='legend'>Hotel Facilities</Typography>
@@ -123,12 +124,12 @@ const Cards = ({ holiday }) => {
         <Typography component='legend'>Hotel Rating</Typography>
         <Rating
           name='read-only'
-          value={holiday?.hotel?.content?.starRating}
+          value={parseInt(holiday?.hotel?.content?.starRating)}
           readOnly
         />
         <Typography component='legend'>Hotel Location</Typography>
         <Typography variant='body2' color='textSecondary' component='p'>
-          {holiday?.hotel?.content?.parentLocation}
+          {getSafe(()=> holiday?.hotel?.content?.parentLocation)}
         </Typography>
       </CardContent>
     </Card>
@@ -138,5 +139,5 @@ const Cards = ({ holiday }) => {
 export default Cards;
 
 Cards.propTypes = {
-  holiday: PropTypes.array.isRequired,
+  holiday: PropTypes.object.isRequired,
 };

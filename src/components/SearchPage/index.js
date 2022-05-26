@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import {
   Autocomplete,
   Container,
@@ -12,7 +12,8 @@ import {
   TextField,
   Button,
 } from "@mui/material";
-import { location, facilities, prices, ratings } from '../../data/constant';
+import { location, facilities, prices, ratings } from '../../data/const/constant';
+import { getSafe } from '../../data/utils/utils';
 import Cards from '../Cards'
 import NoFound from '../NoFound'
 import DatePicker from 'react-datepicker';
@@ -45,23 +46,22 @@ const SearchPage = () => {
 
   const handlePricePP = (event) => {
     setPricePP(event.target.value);
-    console.log(event.target.name)
   };
 
-  const handleFacilities = (event) => {
+  const handleFacilities = useCallback((event) => {
     setFacilities(event.target.value);
-  }
+  });
 
   const handleRating = (event) => {
     setRating(event.target.value);
   }
 
   const handleFilter = () => {
-    const filteredHolidays = data.holidays.filter((holiday) => {
+    const filteredHolidays = holidays.filter((holiday) => {
       if (
-        holiday.pricePerPerson <= selectedPricePP ||
-        holiday.rating === selectedRating ||
-        holiday.hotel.content.hotelFacilities.includes(selectedFacilities)
+        getSafe(()=> holiday.pricePerPerson) <= selectedPricePP ||
+        getSafe(()=> holiday.rating) === selectedRating ||
+        getSafe(()=>holiday.hotel.content.hotelFacilities.includes(selectedFacilities))
       ) {
         return true;
       } else {
@@ -76,7 +76,7 @@ const SearchPage = () => {
     setloading(true);
     const data = {
       bookingType: "hotel",
-      location: selectedCity.city,
+      location: selectedCity.city.toLowerCase(),
       departureDate: moment(startDate).format("DD-MM-YYYY"),
       duration: "7",
       partyCompositions: [
@@ -236,7 +236,7 @@ const SearchPage = () => {
             </div>
           </Container>
           {holidays.length > 0 && <div className='totalCount' component="legend">
-            Total Holidays Found {holidays.length}
+            Total Holidays Found {getSafe(()=> holidays.length)}
           </div>}
           {holidays.length > 0 ? <div className='cards'>
             {

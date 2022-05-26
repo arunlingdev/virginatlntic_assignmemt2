@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './containers/App';
+import ErrorBoundary from './components/ErrorBoundary'
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
+    <ErrorBoundary>
     <App />
+    </ErrorBoundary>
   </React.StrictMode>,
   document.getElementById('root'),
 );

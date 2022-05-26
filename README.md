@@ -2,7 +2,7 @@ virginatlntic_assignmemt2
 
 ##	Installation process
 
-Requires [Node.js](https://nodejs.org/) v8+ and [yarn](https://yarnpkg.com/).
+Requires [Node.js](https://nodejs.org/) v14+ and [yarn](https://yarnpkg.com/).
 
 To verify that you have these applications installed.
 
